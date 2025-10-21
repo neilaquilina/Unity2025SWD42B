@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,11 +14,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject laserPrefab;
 
+    Vector3 playerPosition;
+
+    IEnumerator laserCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
         // Get the main camera
         mainCamera = Camera.main;
+
+        laserCoroutine = ShootLaserContinuously();
     }
 
     /// <summary>
@@ -71,14 +78,37 @@ public class Player : MonoBehaviour
 
     void ShootLaser()
     {
-        Vector3 playerPosition = transform.position;
-        // Check for left mouse button click to spawn the prefab
-        if (Input.GetMouseButtonDown(0))
+
+        // Check for left mouse button click to start shooting
+        if (Input.GetButtonDown("Fire1"))
         {
-            // Instantiate the laser prefab at the player's position with no rotation
-            Instantiate(laserPrefab, playerPosition, Quaternion.identity);
+            StartCoroutine(laserCoroutine);
+        }
+
+        // Check for left mouse button release to stop shooting
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(laserCoroutine);
         }
     }
+
+    IEnumerator ShootLaserContinuously()
+    {
+
+        //loop until coroutine is stopped
+        while (true)
+        {
+            playerPosition = new Vector3 (transform.position.x, transform.position.y + 0.5f, 0f);
+            // Instantiate the laser prefab at the player's position with no rotation
+            GameObject laser = Instantiate(laserPrefab, playerPosition, Quaternion.identity);
+            //move the laser upward
+            laser.GetComponent<Rigidbody2D>().linearVelocityY = 10f;
+            // Optionally, destroy the laser after a certain time to avoid clutter
+            Destroy(laser, 5f);
+            yield return new WaitForSeconds(0.2f); // pause for 0.2 seconds before next shot
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -86,5 +116,6 @@ public class Player : MonoBehaviour
         PlayerMove();
         WrapPlayer();
         ShootLaser();
+        
     }
 }
