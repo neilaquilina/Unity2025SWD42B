@@ -114,11 +114,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bc7ecb2de685d4495ed98c3060ed0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 30
   minimumTimeBetweenShots: 0.2
   maximumTimeBetweenShots: 3
   shotCounter: 0
+  deathParticles: {fileID: 5943206216075847786, guid: af7a01b7fbe6b384d8274e3f73ff9e31, type: 3}
+  particleDuration: 1
   laserPrefab: {fileID: 6354347343736829288, guid: 17e972ec3edc96a4d93f5beadaf63b90, type: 3}
+  deathSound: {fileID: 8300000, guid: 4e78291e23fa92d40add0e340e63e3cd, type: 3}
+  deathSoundVolume: 0.75
+  shootSound: {fileID: 8300000, guid: 4ce4a9f9f4af2e54a9dad51088682249, type: 3}
+  shootSoundVolume: 0.25
 --- !u!60 &902639440923398044
 PolygonCollider2D:
   m_ObjectHideFlags: 0

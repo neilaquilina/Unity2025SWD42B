@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     /// Adjust this value to change how fast the player moves.
     /// </summary>
     [SerializeField] float speed = 5f;
+    [SerializeField] int health = 100;
+
+    [SerializeField] GameObject deathParticles;
+    [SerializeField] float particleDuration = 1f;
 
     // Reference to the main camera
     private Camera mainCamera;
@@ -106,6 +110,24 @@ public class Player : MonoBehaviour
             // Optionally, destroy the laser after a certain time to avoid clutter
             Destroy(laser, 5f);
             yield return new WaitForSeconds(0.2f); // pause for 0.2 seconds before next shot
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //get the DamageDealer component from the colliding object
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        //reduce health by the damage amount
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit();
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+
+            //spawn death particles
+            GameObject explosion = Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Destroy(explosion, particleDuration);
         }
     }
 

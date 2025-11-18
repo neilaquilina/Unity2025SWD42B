@@ -9,7 +9,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maximumTimeBetweenShots = 3f;
     [SerializeField] float shotCounter;
 
+    //visual effects
+    [SerializeField] GameObject deathParticles;
+    [SerializeField] float particleDuration = 1f;
+
     [SerializeField] GameObject laserPrefab;
+
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.75f;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField][Range(0, 1)] float shootSoundVolume = 0.25f;
 
     void GenerateRandomTime()
     {
@@ -27,6 +36,12 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            //spawn death particles
+            GameObject explosion = Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Destroy(explosion, particleDuration);
+            //play death sound
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+
         }
     }
 
@@ -50,6 +65,9 @@ public class Enemy : MonoBehaviour
         laser.GetComponent<Rigidbody2D>().linearVelocityY = -3f;
         // Optionally, destroy the laser after a certain time to avoid clutter
         Destroy(laser, 5f);
+
+        //play shoot sound
+        AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

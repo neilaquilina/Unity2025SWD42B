@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3687158462734555838, guid: e6f878ca7b7a74e44938f9fc587cca6a, type: 3}
+  m_Sprite: {fileID: 3687158462734555838, guid: 1fb9fd01e6c5a5d44a432b02c0fb9991, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,4 +192,10 @@ MonoBehaviour:
   minimumTimeBetweenShots: 0.2
   maximumTimeBetweenShots: 5
   shotCounter: 0
+  deathParticles: {fileID: 5943206216075847786, guid: af7a01b7fbe6b384d8274e3f73ff9e31, type: 3}
+  particleDuration: 1
   laserPrefab: {fileID: 6354347343736829288, guid: 17e972ec3edc96a4d93f5beadaf63b90, type: 3}
+  deathSound: {fileID: 8300000, guid: 4e78291e23fa92d40add0e340e63e3cd, type: 3}
+  deathSoundVolume: 0.75
+  shootSound: {fileID: 8300000, guid: 22cd6a6907939504abda0db859989f30, type: 3}
+  shootSoundVolume: 0.25
