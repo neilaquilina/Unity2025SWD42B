@@ -1,9 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-   
+
+    [SerializeField] float delayInSeconds = 2f;
+
+    IEnumerator WaitAndLoad()
+    {   
+        // Wait for the specified delay
+        yield return new WaitForSeconds(delayInSeconds);
+        // Load the Game Over scene
+        SceneManager.LoadScene("GameOver");
+    }
+
     public void LoadStartMenu()
     {
         // Load the scene with index 0
@@ -19,13 +30,14 @@ public class LevelManager : MonoBehaviour
     public void LoadGameOver()
     {
         // Load the scene named "GameOver"
-        SceneManager.LoadScene("GameOver");
+        StartCoroutine(WaitAndLoad());
     }
 
     public void QuitGame()
     {
         // Quit the application
         Application.Quit();
+        print("Quit Game");
     }
 
 }

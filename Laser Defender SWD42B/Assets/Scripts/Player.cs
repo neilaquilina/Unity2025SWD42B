@@ -128,6 +128,9 @@ public class Player : MonoBehaviour
             //spawn death particles
             GameObject explosion = Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(explosion, particleDuration);
+
+            //call Game Over
+            FindFirstObjectByType<LevelManager>().LoadGameOver();
         }
     }
 
