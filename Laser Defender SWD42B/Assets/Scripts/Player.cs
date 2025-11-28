@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject deathParticles;
     [SerializeField] float particleDuration = 1f;
 
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.25f;
+
     // Reference to the main camera
     private Camera mainCamera;
 
@@ -109,6 +112,9 @@ public class Player : MonoBehaviour
             laser.GetComponent<Rigidbody2D>().linearVelocityY = 10f;
             // Optionally, destroy the laser after a certain time to avoid clutter
             Destroy(laser, 5f);
+            //play shoot sound
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
+
             yield return new WaitForSeconds(0.2f); // pause for 0.2 seconds before next shot
         }
     }

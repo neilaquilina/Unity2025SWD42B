@@ -105,6 +105,8 @@ MonoBehaviour:
   health: 100
   deathParticles: {fileID: 5943206216075847786, guid: af7a01b7fbe6b384d8274e3f73ff9e31, type: 3}
   particleDuration: 1
+  shootSound: {fileID: 8300000, guid: 4ce4a9f9f4af2e54a9dad51088682249, type: 3}
+  shootSoundVolume: 0.25
   laserPrefab: {fileID: 8959306382909697538, guid: a75d95263bdc2e74bb86e850e0217eab, type: 3}
 --- !u!60 &2776105103172756679
 PolygonCollider2D:

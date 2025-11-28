@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] int health = 10;
+    [SerializeField] int scoreValue = 1;
 
     [SerializeField] float minimumTimeBetweenShots = 0.2f;
     [SerializeField] float maximumTimeBetweenShots = 3f;
@@ -41,6 +42,9 @@ public class Enemy : MonoBehaviour
             Destroy(explosion, particleDuration);
             //play death sound
             AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+
+            //add to the player's score
+            FindFirstObjectByType<GameSession>().AddToScore(scoreValue);
 
         }
     }
