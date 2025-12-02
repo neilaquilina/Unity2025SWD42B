@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0cd6ada95e86dc74390b47d7e21fafc8
+guid: 4cfc2a656b378dd4580fe93d704831e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7388614713056731152
-    second: laserGreen11_0
+      213: 4883361942472830884
+    second: Health-Bar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: laserGreen11_0
+      name: Health-Bar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 9
-        height: 54
+        width: 250
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ff5706a01e567990800000000000000
-      internalID: -7388614713056731152
+      spriteID: 4af21c240df25c340800000000000000
+      internalID: 4883361942472830884
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      laserGreen11_0: -7388614713056731152
+      Health-Bar_0: 4883361942472830884
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

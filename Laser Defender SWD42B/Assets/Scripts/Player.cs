@@ -140,6 +140,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
+
 
     // Update is called once per frame
     void Update()
